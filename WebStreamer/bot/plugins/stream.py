@@ -83,7 +83,7 @@ async def private_receive_handler(c: Client, m: Message):
 <b>📥 لینک دانلود :</b> <i>{}</i>\n
 ⚠️توجه : 
 لینک شما بعد از 24 ساعت منقضی میشود
- برای داعمی بودن لینک ها به <a href='https://t.me/download_maram'>پشتیبانی</a> مراجعه کنید
+ برای داعمی بودن لینک ها به <a href='https://t.me/download_maram'>پشتیبانی</a> مراجعه کنید. 
 """
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
