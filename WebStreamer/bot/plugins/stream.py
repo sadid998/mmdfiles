@@ -12,7 +12,7 @@ from pyrogram import filters, Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
-
+import requests
 
 def get_media_file_size(m):
     media = m.video or m.audio or m.document
@@ -75,6 +75,8 @@ async def private_receive_handler(c: Client, m: Message):
                                     Var.PORT,
                                     log_msg.message_id,
                                     file_name)
+
+response = requests.get(f"https://droplink.co/api?api=0b8645cc45284e92d722e59c60d918291526a16c&url=‌{stream_link}").json()["shortenedUrl"]
 
         msg_text ="""
 <i><u>لینک شما آماده است !</u></i>\n
