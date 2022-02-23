@@ -76,9 +76,6 @@ async def private_receive_handler(c: Client, m: Message):
                                     Var.PORT,
                                     log_msg.message_id,
                                     file_name)
-response = requests.get(f"https://droplink.co/api?api=0b8645cc45284e92d722e59c60d918291526a16c&url={stream_link}").text
-            linkk = (json.loads(response)["shortenedUrl"])
-
 
         msg_text ="""
 <i><u>لینک شما آماده است !</u></i>\n
@@ -86,15 +83,15 @@ response = requests.get(f"https://droplink.co/api?api=0b8645cc45284e92d722e59c60
 <b>📦 اندازه فایل :</b> <i>{}</i>\n
 <b>📥 لینک دانلود :</b> <i>{}</i>\n
 
- <a href='https://t.me/download_maram'>آموزش</a> استفاه از لینک کوتاه شده . 
+ <a href='https://t.me/download_maram'>خرید اشتراک</a> . 
 """
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
-            text=msg_text.format(file_name, file_size, linkk),
+            text=msg_text.format(file_name, file_size, stream_link),
             parse_mode="HTML", 
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥", url=linkk)]]),
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥", url=stream_link)]]),
             quote=True
         )
     except FloodWait as e:
